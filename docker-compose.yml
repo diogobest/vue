@@ -1,0 +1,8 @@
+services:
+  web:
+    image: node:latest
+    ports:
+      - "3036:3036"
+    volumes:
+      - .:/vue-projects
+    working_dir: /vue-projects
