@@ -11,12 +11,10 @@ export default defineConfig({
     vueDevTools(),
   ],
   server: {
-    host: '0.0.0.0',  // Listen on all network interfaces
-    port: 3036,       // Use the same port
+    host: '0.0.0.0',
+    port: 3036,
     strictPort: true,
-    hmr: {
-      host: 'localhost'  // Use 'localhost' instead of container name
-    }
+    hmr: { host: 'localhost' }
   },
   resolve: {
     alias: {
