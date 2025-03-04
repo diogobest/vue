@@ -5,7 +5,12 @@
         {{ status_code }}
       </option>
     </select>
-    <img :src="gif_url" alt="HTTP Status Code" />
+    <select name="gif_or_jpg" @change="selected_type">
+      <option v-for="type in types" :key="type" :value="type">
+        {{ type }}
+      </option>
+    </select>
+    <img class="image_code" :src="gif_url" alt="HTTP Status Code" />
   </div>
 </template>
 
@@ -13,17 +18,24 @@
 import { ref, onMounted } from 'vue'
 import random_http_code from '../tools/random_number'
 
+const types = ['gif', 'jpg']
 const binary = ref('')
-const code = ref(200)
 const gif_url = ref('')
+const code = ref({ status: 200 })
+const type = ref('gif')
 
 onMounted(() => {
-  gif_url.value = `https://vadivelu.anoram.com/gif/${code.value}`
+  gif_url.value = `https://vadivelu.anoram.com/${type.value}/${code.value.status}`
 })
 
 function selected_number(event) {
-  code.value = event.target.value
-  gif_url.value = `https://vadivelu.anoram.com/gif/${code.value}`
+  code.value.status = event.target.value
+  gif_url.value = `https://vadivelu.anoram.com/${type.value}/${code.value.status}`
+}
+
+function selected_type(event) {
+  type.value = event.target.value
+  gif_url.value = `https://vadivelu.anoram.com/${type.value}/${code.value.status}`
 }
 
 const statuses_code = ref(random_http_code)
