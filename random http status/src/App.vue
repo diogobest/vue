@@ -1,9 +1,11 @@
 <script setup>
-  import HttpStatus from './components/HttpStatus.vue'
+  //import HttpStatus from './components/HttpStatus.vue'
+  // import Listing from './components/Listing.vue'
+  import Ricky from './components/Ricky.vue'
 </script>
 
 <template>
-  <HttpStatus />
+  <Ricky />
 </template>
 
 <style scoped>
